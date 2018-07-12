@@ -33,3 +33,30 @@ class Solution(object):
                     l2 = l2.next
         
         return root.next
+
+
+    def mergeTwoListsII(self, l1, l2):
+        """
+        :type l1: ListNode
+        :type l2: ListNode
+        :rtype: ListNode
+        """
+        
+        head = ListNode(-1)
+        cur = head
+        
+        while l1 and l2:
+            if l1.val < l2.val:
+                cur.next = l1
+                l1 = l1.next
+            else:
+                cur.next = l2
+                l2 = l2.next
+            cur = cur.next
+            
+        if not l1:
+            cur.next = l2
+        elif not l2:
+            cur.next = l1
+        
+        return head.next
