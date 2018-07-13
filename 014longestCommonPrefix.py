@@ -20,4 +20,31 @@ class Solution(object):
             longest = candidate
         
         return longest
+
+
+    def longestCommonPrefixAlt(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: str
+        """
                 
+        commonPrefix= ""
+        
+        if len(strs) < 1 or "" in strs:
+            return commonPrefix
+
+        i = 0
+        
+        while True:
+            try:
+                s = strs[0][i]
+            except IndexError:
+                return commonPrefix
+            for string in strs:
+                try:
+                    if string[i] != s:
+                        return commonPrefix
+                except IndexError:
+                    return commonPrefix
+            commonPrefix += s
+            i += 1
